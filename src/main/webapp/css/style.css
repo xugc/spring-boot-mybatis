@@ -42,7 +42,7 @@ body a:hover{
 .header {
     background-color: #5D4B33;
     padding: 0;
-	position: relative;
+	/*position: relative;*/
 }
 nav.navbar.navbar-default {
     background: none;
