@@ -46,7 +46,7 @@
 	</nav>
 	<div id="container" style="height: 100%;width:100%"></div>
 	<script type="text/javascript" src="../js/echarts.min.js"></script>
-	<script type="text/javascript" src="../js/jquery-1.12.3.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		$
