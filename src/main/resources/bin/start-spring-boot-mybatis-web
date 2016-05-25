@@ -47,7 +47,6 @@ START () {
 	else
 		# 构建CLASSPATH环境变量
 		CLASSPATH=${CLASSPATH}:${SERVER_HOME}/lib/*
-		CLASSPATH=${CLASSPATH}:${SERVER_HOME}/webapp/*
 		
 		echo "Using JAVA_HOME:${JAVA_HOME}"
 		echo "Using CLASSPATH:${CLASSPATH}"
