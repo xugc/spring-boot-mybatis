@@ -19,12 +19,25 @@
 				<include>WEB-INF\**</include>
 				<include>index.html</include>
 			</includes>
-			<outputDirectory>\webapp</outputDirectory>
+			<outputDirectory>\public</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>src/main/resources/conf/${target.dir}</directory>
+			<includes>
+				<include>**.properties</include>
+			</includes>
+			<outputDirectory>\config</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>${project.basedir}\src\main\resources\bin</directory>
+			<outputDirectory>\bin</outputDirectory>
+			<fileMode>0755</fileMode>
+			<lineEnding>unix</lineEnding>
 		</fileSet>
 	</fileSets>
 	<dependencySets>
 		<dependencySet>
-			<useProjectArtifact>true</useProjectArtifact>
+			<useProjectArtifact>true</useProjectArtifact><!-- 项目本省也加入到lib -->
 			<outputDirectory>lib</outputDirectory><!-- 将scope为runtime的依赖包打包到lib目录下。 -->
 			<scope>runtime</scope>
 		</dependencySet>
