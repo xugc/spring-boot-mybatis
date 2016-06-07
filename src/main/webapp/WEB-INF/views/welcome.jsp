@@ -20,25 +20,17 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Project name</a>
+				<a class="navbar-brand" href="#">产品地图</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav nav-tabs">
-					<li role="presentation" class="active"><a href="#">Home</a>
-					</li>
-					<li role="presentation"><a href="#">Profile</a>
-					</li>
-					<li role="presentation"><a href="#">Messages</a>
-					</li>
-				</ul>
 				<form class="navbar-form navbar-right">
 					<div class="form-group">
-						<input type="text" placeholder="Email" class="form-control">
+						<input type="text" placeholder="用户名" class="form-control">
 					</div>
 					<div class="form-group">
-						<input type="password" placeholder="Password" class="form-control">
+						<input type="password" placeholder="密码" class="form-control">
 					</div>
-					<button type="submit" class="btn btn-success">Sign in</button>
+					<button type="submit" class="btn btn-success">登录</button>
 				</form>
 			</div>
 			<!--/.navbar-collapse -->
@@ -676,7 +668,7 @@
 									itemStyle : {
 										normal : {
 											areaColor : '#323c48',
-											borderColor : '#404a59'
+											borderColor : '#fff'
 										},
 										emphasis : {
 											areaColor : '#2a333d'
