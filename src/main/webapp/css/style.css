@@ -40,7 +40,7 @@ body a:hover{
 }
 /*--header--*/
 .header {
-    background-color: #5D4B33;
+    background-color: rgb(204, 13, 13);
     padding: 0;
 	/*position: relative;*/
 }
@@ -74,18 +74,18 @@ nav.navbar.navbar-default {
     display: block;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    background: #F07818;
+    background: #B51414;
     color: #fff;
 }
 .nav > li > a.active{
-     background: #F07818;
+     background: #B51414;
 }
 .row {
     margin: 0;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     color: #FFF;
-    background-color: #F07818;
+    background-color: #B51414;
 }
 b.caret {
     margin-left: 10px;
