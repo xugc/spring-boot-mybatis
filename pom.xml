@@ -95,6 +95,12 @@
 			<version>7.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- kaptcha -->
+		<dependency>
+			<groupId>com.github.penggle</groupId>
+			<artifactId>kaptcha</artifactId>
+			<version>2.3.2</version>
+		</dependency>
 	</dependencies>
 	<repositories>
 		<repository>
