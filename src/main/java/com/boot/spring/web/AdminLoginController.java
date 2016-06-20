@@ -1,7 +1,7 @@
 /**
- * @Title: AdminLoginController.java
+ * @Title AdminLoginController.java
  * @Package com.boot.spring.web
- * @Description: TODO
+ * @Description TODO
  * Copyright: Copyright (c) 2016 
  * Company:*******
  * 
@@ -16,8 +16,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * @ClassName: AdminLoginController
- * @Description: TODO
+ * @ClassName AdminLoginController
+ * @Description TODO
  * 
  */
 @Controller

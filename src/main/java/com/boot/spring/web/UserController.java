@@ -1,7 +1,7 @@
 /**
- * @Title: UserController.java
+ * @Title UserController.java
  * @Package com.boot.spring.web
- * @Description: TODO
+ * @Description TODO
  * Copyright: Copyright (c) 2016 
  * Company:*******
  * 
@@ -25,8 +25,8 @@ import com.boot.spring.domain.User;
 import com.boot.spring.service.UserService;
 
 /**
- * @ClassName: UserController
- * @Description: TODO
+ * @ClassName UserController
+ * @Description TODO
  * 
  */
 @Controller

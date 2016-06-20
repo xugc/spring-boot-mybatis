@@ -1,7 +1,7 @@
 /**
- * @Title: UserServiceImpl.java
+ * @Title UserServiceImpl.java
  * @Package com.boot.spring.service.impl
- * @Description: TODO
+ * @Description TODO
  * Copyright: Copyright (c) 2016 
  * Company:*******
  * 
@@ -22,8 +22,8 @@ import com.boot.spring.domain.User;
 import com.boot.spring.service.UserService;
 
 /**
- * @ClassName: UserServiceImpl
- * @Description: TODO
+ * @ClassName UserServiceImpl
+ * @Description TODO
  * 
  */
 @Service
