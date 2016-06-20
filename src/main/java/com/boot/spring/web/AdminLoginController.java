@@ -34,4 +34,9 @@ public class AdminLoginController {
 		return "admin_default";
 	}
 	
+	@RequestMapping("/success")
+	public String toDefault(){
+		return "admin_default";
+	}
+	
 }
