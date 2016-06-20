@@ -25,7 +25,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class AdminLoginController {
 	@RequestMapping("/login")
-	public String login() {
+	public String toLogin() {
 		return "admin_login";
 	}
+	
+	@RequestMapping("/submit")
+	public String login() {
+		return "admin_default";
+	}
+	
 }
