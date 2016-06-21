@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -38,7 +39,8 @@
 	<div class="login">
 		<div class="login_form">
 			<form action="submit" method="post">
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
 				<div class="login_info">
 					<div class="login_info_title">选择登录版本：</div>
 					<div class="select">
@@ -52,13 +54,16 @@
 				</div>
 				<div class="form_info">
 					<div class="field">
-						<label>用户名：</label> <input name="userName" type="text" class="text" size="20">
+						<label>用户名：</label> <input name="userName" type="text"
+							class="text" size="20" value="${ info.userName }">
 					</div>
 					<div class="field">
-						<label>密 码：</label> <input name="userPwd" type="password" class="text" size="20">
+						<label>密 码：</label> <input name="userPwd" type="password"
+							class="text" size="20">
 					</div>
 					<div class="field">
-						<label>验证码：</label> <input name="validateNumber" type="text" class="text" size="10">
+						<label>验证码：</label> <input name="validateNumber" type="text"
+							class="text" size="10" value="${ info.validateNumber }">
 					</div>
 					<div class="field">
 						<cite><img src="/imgCreator/captcha-image"
@@ -78,12 +83,17 @@
 																.fadeIn();
 													})
 								});
-							</script>
-						</cite>
+							</script> </cite>
 					</div>
+					<c:if test="${ info.validateNumber!=null }">
+						<div class="field">
+							<span><font color="red">${ info.msg }</font> </span>
+						</div>
+					</c:if>
 					<div class="field">
 						<label></label>
-						<button class="button" style="margin-left:50px;_margin-left:48px" type="submit"></button>
+						<button class="button" style="margin-left:50px;_margin-left:48px"
+							type="submit"></button>
 					</div>
 				</div>
 			</form>

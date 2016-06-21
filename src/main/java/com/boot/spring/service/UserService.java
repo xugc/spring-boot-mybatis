@@ -21,4 +21,5 @@ import com.boot.spring.domain.User;
 public interface UserService {
 	public int addUser(User user);
 	public void addUserError(User user) throws Exception;
+	public User getUserByUserName(String userName);
 }

@@ -11,9 +11,15 @@
  */
 package com.boot.spring.web;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.boot.spring.domain.vo.UserLoginInfoVo;
+import com.google.code.kaptcha.Constants;
 
 /**
  * @ClassName AdminLoginController
@@ -28,15 +34,25 @@ public class AdminLoginController {
 	public String toLogin() {
 		return "admin_login";
 	}
-	
+
 	@RequestMapping("/submit")
-	public String login() {
+	public String login(String userName, String userPwd, String validateNumber,
+			HttpSession session, ModelAndView model) {
+		String valNumber = (String) session
+				.getAttribute(Constants.KAPTCHA_SESSION_KEY);
+		if (!valNumber.equals(validateNumber)) {
+			UserLoginInfoVo userInfo = new UserLoginInfoVo();
+			userInfo.setMsg("验证码错误");
+			userInfo.setUserName(userName);
+			model.addObject("info", userInfo);
+			return "admin_login";
+		}
 		return "admin_default";
 	}
-	
+
 	@RequestMapping("/success")
-	public String toDefault(){
+	public String toDefault() {
 		return "admin_default";
 	}
-	
+
 }

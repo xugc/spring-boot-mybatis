@@ -38,12 +38,17 @@ public class UserServiceImpl implements UserService {
 	public int addUser(User user) {
 		return userMapper.insert(user);
 	}
-
+	
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addUserError(User user) throws Exception {
 		userMapper.insertSelective(user);
 		throw new RuntimeException("dfdf");
+	}
+
+	@Override
+	public User getUserByUserName(String userName) {
+		return userMapper.selectByUserName(userName);
 	}
 
 }

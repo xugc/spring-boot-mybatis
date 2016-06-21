@@ -68,4 +68,12 @@ public class User implements Serializable{
     public void setPhone(String phone) {
         this.phone = phone == null ? null : phone.trim();
     }
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", loginName=" + loginName + ", password="
+				+ password + ", userName=" + userName + ", email=" + email
+				+ ", phone=" + phone + "]";
+	}
+    
 }
