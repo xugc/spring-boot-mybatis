@@ -37,7 +37,8 @@
 <body>
 	<div class="login">
 		<div class="login_form">
-			<form action="submit.do" method="post">
+			<form action="submit" method="post">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<div class="login_info">
 					<div class="login_info_title">选择登录版本：</div>
 					<div class="select">
@@ -54,13 +55,13 @@
 						<label>用户名：</label> <input name="userName" type="text" class="text" size="20">
 					</div>
 					<div class="field">
-						<label>密 码：</label> <input name="userPswwd" type="password" class="text" size="20">
+						<label>密 码：</label> <input name="userPwd" type="password" class="text" size="20">
 					</div>
 					<div class="field">
 						<label>验证码：</label> <input name="validateNumber" type="text" class="text" size="10">
 					</div>
 					<div class="field">
-						<cite><img src="/imgCreator/captcha-image.do"
+						<cite><img src="/imgCreator/captcha-image"
 							id="kaptchaImage" /> <script type="text/javascript">
 								$(function() {
 									$('#kaptchaImage')
@@ -70,7 +71,7 @@
 																.hide()
 																.attr(
 																		'src',
-																		'/imgCreator/captcha-image.do?'
+																		'/imgCreator/captcha-image?'
 																				+ Math
 																						.floor(Math
 																								.random() * 100))

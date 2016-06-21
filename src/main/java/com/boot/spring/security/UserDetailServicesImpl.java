@@ -31,8 +31,8 @@ public class UserDetailServicesImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String userName)
 			throws UsernameNotFoundException {
 		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-		authorities.add(new SimpleGrantedAuthority("role"));
-		return new User("user", "pwd", authorities);
+		authorities.add(new SimpleGrantedAuthority("admin"));
+		return new User("xgc", "123", authorities);
 	}
 
 }
