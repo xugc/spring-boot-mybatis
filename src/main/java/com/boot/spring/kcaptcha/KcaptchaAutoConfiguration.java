@@ -9,7 +9,7 @@
  * @date 2016-6-20 下午3:11:49
  * @version V1.0
  */
-package com.boot.spring.config;
+package com.boot.spring.kcaptcha;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

@@ -9,7 +9,7 @@
  * @date 2016-6-20 下午3:01:04
  * @version V1.0
  */
-package com.boot.spring.config;
+package com.boot.spring.kcaptcha;
 
 import java.util.Properties;
 

@@ -15,8 +15,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.boot.spring.domain.vo.UserLoginInfoVo;
 import com.google.code.kaptcha.Constants;
@@ -37,14 +37,15 @@ public class AdminLoginController {
 
 	@RequestMapping("/submit")
 	public String login(String userName, String userPwd, String validateNumber,
-			HttpSession session, ModelAndView model) {
+			HttpSession session, Model model) {
 		String valNumber = (String) session
 				.getAttribute(Constants.KAPTCHA_SESSION_KEY);
 		if (!valNumber.equals(validateNumber)) {
 			UserLoginInfoVo userInfo = new UserLoginInfoVo();
 			userInfo.setMsg("验证码错误");
+			userInfo.setValidateNumber(valNumber);
 			userInfo.setUserName(userName);
-			model.addObject("info", userInfo);
+			model.addAttribute("info", userInfo);
 			return "admin_login";
 		}
 		return "admin_default";

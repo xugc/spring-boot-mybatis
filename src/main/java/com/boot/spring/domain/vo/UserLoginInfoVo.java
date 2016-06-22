@@ -11,12 +11,14 @@
  */
 package com.boot.spring.domain.vo;
 
+
 /**  
  * @ClassName UserLoginInfoVo  
  * @Description TODO  
  *    
  */
 public class UserLoginInfoVo {
+	
 	private String userName;
 	private String validateNumber;
 	private String msg;
