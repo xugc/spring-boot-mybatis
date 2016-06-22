@@ -33,7 +33,7 @@ public class ErrorController implements
 	@RequestMapping("/error")
 	@ResponseBody
 	public String error() {
-		return "服务器错误";
+		return "无效的请求";
 	}
 
 }

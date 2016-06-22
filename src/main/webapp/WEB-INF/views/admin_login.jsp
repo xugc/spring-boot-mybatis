@@ -38,9 +38,9 @@
 <body>
 	<div class="login">
 		<div class="login_form">
-			<form action="submit" method="post">
-				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" />
+			<form action="login" method="post">
+				<!-- <input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" /> -->
 				<div class="login_info">
 					<div class="login_info_title">选择登录版本：</div>
 					<div class="select">

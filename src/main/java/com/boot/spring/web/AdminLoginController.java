@@ -17,6 +17,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.boot.spring.domain.vo.UserLoginInfoVo;
 import com.google.code.kaptcha.Constants;
@@ -30,12 +31,12 @@ import com.google.code.kaptcha.Constants;
 @EnableAutoConfiguration
 @RequestMapping("/admin")
 public class AdminLoginController {
-	@RequestMapping("/login")
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String toLogin() {
 		return "admin_login";
 	}
 
-	@RequestMapping("/submit")
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(String userName, String userPwd, String validateNumber,
 			HttpSession session, Model model) {
 		String valNumber = (String) session
