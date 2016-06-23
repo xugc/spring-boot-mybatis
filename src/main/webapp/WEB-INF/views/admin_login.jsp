@@ -50,6 +50,7 @@
 							<li eid="chinese">中文版</li>
 						</ul>
 						<input type="hidden" value="chinese" name="eid" id="eid" />
+						<input type="hidden" value="${ valcodeuuid }" name="pageId" />
 					</div>
 				</div>
 				<div class="form_info">
@@ -66,21 +67,13 @@
 							class="text" size="10" value="${ info.validateNumber }">
 					</div>
 					<div class="field">
-						<cite><img src="/imgCreator/captcha-image"
+						<cite><img src="/imgCreator/captcha-image?pageId=${ valcodeuuid }"
 							id="kaptchaImage" /> <script type="text/javascript">
 								$(function() {
-									$('#kaptchaImage')
-											.click(
+									$('#kaptchaImage').click(
 													function() {//生成验证码
-														$(this)
-																.hide()
-																.attr(
-																		'src',
-																		'/imgCreator/captcha-image?'
-																				+ Math
-																						.floor(Math
-																								.random() * 100))
-																.fadeIn();
+														$(this).hide().attr('src',
+																		'/imgCreator/captcha-image?pageId=${ valcodeuuid }').fadeIn();
 													})
 								});
 							</script> </cite>

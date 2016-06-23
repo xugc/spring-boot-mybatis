@@ -17,6 +17,7 @@ import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -24,7 +25,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 
 /**
@@ -41,8 +41,8 @@ public class ValidateImgCreateController {
 	private Producer captchaProducer;
 
 	@RequestMapping("/captcha-image")
-	public ModelAndView createImage(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	public ModelAndView createImage(String pageId, HttpServletRequest request,
+			HttpServletResponse response, HttpSession session) throws Exception {
 
 		response.setDateHeader("Expires", 0);
 		// Set standard HTTP/1.1 no-cache headers.
@@ -57,8 +57,7 @@ public class ValidateImgCreateController {
 		// create the text for the image
 		String capText = captchaProducer.createText();
 		// store the text in the session
-		request.getSession().setAttribute(Constants.KAPTCHA_SESSION_KEY,
-				capText);
+		session.setAttribute(pageId, capText);
 		// create the image with the text
 		BufferedImage bi = captchaProducer.createImage(capText);
 		ServletOutputStream out = response.getOutputStream();

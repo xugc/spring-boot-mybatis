@@ -13,7 +13,7 @@
 		<div class="top_subnav">彩云之南内容管理平台 ＞ 首页</div>
 		<div class="title">
 			<div class="title_info zs">
-				Admin 早上好，欢迎使用彩云之南后台管理系统<label>(admin@163.com)</label> <a href="#">帐号设置</a>
+				${ user.userName } 早上好，欢迎使用彩云之南后台管理系统<label>(${ user.email })</label> <a href="#">帐号设置</a>
 			</div>
 		</div>
 		<div class="quick">

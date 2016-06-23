@@ -49,7 +49,7 @@ public class ShiroConfiguration {
 	@Bean
 	public FilterRegistrationBean filterRegistrationBean() {
 		FilterRegistrationBean filterRegistration = new FilterRegistrationBean();
-		filterRegistration.setFilter(new DelegatingFilterProxy("shiroFilter")); 
+		filterRegistration.setFilter(new DelegatingFilterProxy("shiroFilter"));
 		// 该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理
 		filterRegistration.addInitParameter("targetFilterLifecycle", "true");
 		filterRegistration.setEnabled(true);
@@ -106,7 +106,7 @@ public class ShiroConfiguration {
 		// //
 		// anon：它对应的过滤器里面是空的,什么都没做
 		// logger.info("##################从数据库读取权限规则，加载到shiroFilter中##################");
-//		filterChainDefinitionMap.put("/user/edit/**", "au,perms[user:edit]");
+		// filterChainDefinitionMap.put("/user/edit/**", "au,perms[user:edit]");
 		// 这里为了测试，固定写死的值，也可以从数据库或其他配置中读取
 		filterChainDefinitionMap.put("/js/**", "anon");
 		filterChainDefinitionMap.put("/css/**", "anon");
@@ -124,6 +124,8 @@ public class ShiroConfiguration {
 		cfaFilter.setUsernameParam(ShrioProperties.SHRIO_USERNAME_PARAM);
 		cfaFilter.setPasswordParam(ShrioProperties.SHRIO_PASSWORD_PARAM);
 		cfaFilter.setCaptchaParam(ShrioProperties.SHRIO_VALIDATE_CODE_PARAM);
+		cfaFilter
+				.setCaptchaIdParam(ShrioProperties.SHRIO_VALIDATE_CODE_ID_PARAM);
 		return cfaFilter;
 	}
 

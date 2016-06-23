@@ -20,6 +20,7 @@ package com.boot.spring.domain.vo;
 public class UserLoginInfoVo {
 	
 	private String userName;
+	private String email;
 	private String validateNumber;
 	private String msg;
 	public String getUserName() {
@@ -39,6 +40,12 @@ public class UserLoginInfoVo {
 	}
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }
