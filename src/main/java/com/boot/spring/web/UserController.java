@@ -31,7 +31,7 @@ import com.boot.spring.service.UserService;
  */
 @Controller
 @EnableAutoConfiguration
-@RequestMapping("/user")
+@RequestMapping("/admin/user")
 public class UserController {
 	@Autowired
 	UserService userService;
