@@ -23,7 +23,7 @@
 			<p class="line">
 			</p>
 			<div class="quick_block">
-				<a href="#"><img src="../images/admin/index_ico.jpg"><span>网站设置</span></a>
+				<a href="main"><img src="../images/admin/index_ico.jpg"><span>网站设置</span></a>
 				<a href="#"><img src="../images/admin/add_ico.jpg"><span>发布文章</span></a>
 				<a href="#"><img src="../images/admin/tj_ico.jpg"><span>数据统计</span></a>
 				<a href="#"><img src="../images/admin/enter_ico.jpg"><span>文件上传</span></a>
@@ -41,7 +41,7 @@
 					彩云之南 内容管理平台 使用指南
 				</div>
 			</div>
-			<p><span>您可以快速进行文章发布管理操作</span><a href="#">发布或管理文章</a> </p>
+			<p><span>您可以快速进行文章发布管理操作</span><a href="articles">发布或管理文章</a> </p>
 			<p><span>您可以快速发布产品 </span><a href="#">发布或管理产品</a></p>
 			<p><span>您可以进行密码修改、帐户设置等操作 </span><a href="#">帐户管理</a></p>
 		</div>

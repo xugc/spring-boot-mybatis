@@ -1,15 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>tqphp</title>
-<link rel="stylesheet" type="text/css" href="css/admin_style.css" />
-<script src="js/jquery-1.4.4.min.js"></script>
-<script src="js/iframe.js"></script>
+<title>彩云之南内容管理平台</title>
+<link rel="stylesheet" type="text/css" href="../css/admin_style.css" />
+<script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
+<script src="../js/admin-iframe.js"></script>
 </head>
 <body class="right_body">
 	<div class="body">
-		<div class="top_subnav">CMS内容管理平台 ＞ 首页</div>
+		<div class="top_subnav">彩云之南内容管理平台 ＞ 首页</div>
 		<div class="title_h2">
 			搜索
 		</div>

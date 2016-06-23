@@ -10,6 +10,7 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.slf4j.Logger;
@@ -87,5 +88,10 @@ public class MyShiroRealm extends AuthorizingRealm {
 					getName());
 		}
 		return null;
+	}
+
+	public static void main(String[] args) {
+		String pwd = "123";
+		System.out.println(new Md5Hash(pwd, "", 4).toBase64());
 	}
 }

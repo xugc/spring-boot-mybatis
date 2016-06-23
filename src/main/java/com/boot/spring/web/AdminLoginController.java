@@ -59,5 +59,15 @@ public class AdminLoginController {
 	public String toDefault() {
 		return "admin_default";
 	}
+	
+	@RequestMapping("/articles")
+	public String toArticles() {
+		return "admin_table";
+	}
+	
+	@RequestMapping("/main")
+	public String toMain() {
+		return "admin_main";
+	}
 
 }

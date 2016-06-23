@@ -5,6 +5,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.util.WebUtils;
@@ -75,8 +76,8 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
 		String host = getHost(request);
 
 		return new CaptchaUsernamePasswordToken(username,
-				password == null ? "".toCharArray() : password.toCharArray(),
-				rememberMe, host, captcha);
+				password == null ? "".toCharArray() : new Md5Hash(password, "",
+						4).toBase64().toCharArray(), rememberMe, host, captcha);
 	}
 
 	public static final String DEFAULT_CAPTCHA_PARAM = "captcha";
