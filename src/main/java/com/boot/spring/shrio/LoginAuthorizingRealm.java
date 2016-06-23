@@ -22,9 +22,9 @@ import com.boot.spring.dao.UserMapper;
 import com.boot.spring.domain.User;
 
 @Service("myShiroRealm")
-public class MyShiroRealm extends AuthorizingRealm {
+public class LoginAuthorizingRealm extends AuthorizingRealm {
 	private static final Logger logger = LoggerFactory
-			.getLogger(MyShiroRealm.class);
+			.getLogger(LoginAuthorizingRealm.class);
 	@Autowired
 	private UserMapper userMapper;
 

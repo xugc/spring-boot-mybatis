@@ -71,7 +71,7 @@ public class ShiroConfiguration {
 
 	@Bean(name = "securityManager")
 	public DefaultWebSecurityManager getDefaultWebSecurityManager(
-			MyShiroRealm myShiroRealm) {
+			LoginAuthorizingRealm myShiroRealm) {
 		DefaultWebSecurityManager dwsm = new DefaultWebSecurityManager();
 		dwsm.setRealm(myShiroRealm); // <!-- 用户授权/认证信息Cache, 采用EhCache 缓存 -->
 		dwsm.setCacheManager(getEhCacheManager());
@@ -80,7 +80,7 @@ public class ShiroConfiguration {
 
 	@Bean
 	public AuthorizationAttributeSourceAdvisor getAuthorizationAttributeSourceAdvisor(
-			MyShiroRealm myShiroRealm) {
+			LoginAuthorizingRealm myShiroRealm) {
 		AuthorizationAttributeSourceAdvisor aasa = new AuthorizationAttributeSourceAdvisor();
 		aasa.setSecurityManager(getDefaultWebSecurityManager(myShiroRealm));
 		return new AuthorizationAttributeSourceAdvisor();
@@ -129,18 +129,14 @@ public class ShiroConfiguration {
 
 	/**
 	 * ShiroFilter<br/>
-	 * 注意这里参数中的 StudentService 和 IScoreDao 只是一个例子，因为我们在这里可以用这样的方式获取到相关访问数据库的对象，
-	 * 然后读取数据库相关配置，配置到 shiroFilterFactoryBean 的访问规则中。实际项目中，请使用自己的Service来处理业务逻辑。
 	 * 
 	 * @param myShiroRealm
-	 * @param stuService
-	 * @param scoreDao
 	 * @return * @author SHANHY
 	 * @create 2016年1月14日
 	 */
 	@Bean(name = "shiroFilter")
 	public ShiroFilterFactoryBean getShiroFilterFactoryBean(
-			MyShiroRealm myShiroRealm) {
+			LoginAuthorizingRealm myShiroRealm) {
 
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean(); // 必须设置
 		shiroFilterFactoryBean
