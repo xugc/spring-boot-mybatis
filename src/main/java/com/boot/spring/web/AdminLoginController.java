@@ -44,7 +44,7 @@ public class AdminLoginController {
 	private UserService userService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String toLogin(Model model,HttpSession session) {
+	public String toLogin(Model model, HttpSession session) {
 		String valcodeuuid = UUID.randomUUID().toString();
 		model.addAttribute("valcodeuuid", valcodeuuid);
 		return "admin_login";
@@ -64,7 +64,7 @@ public class AdminLoginController {
 			attr.addFlashAttribute("info", userInfo);
 			return "redirect:/admin/login";
 		}
-		return "admin_default";
+		return "redirect:/admin/success";
 	}
 
 	@RequestMapping("/success")
