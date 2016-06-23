@@ -101,8 +101,8 @@
 	</div>
 	<div class="right">
 		<IFRAME style="OVERFLOW: visible" id="main" name="main"
-			src="about:blank" frameBorder=0 width="0" scrolling="yes"
-			height="0"></IFRAME>
+			src="about:blank" frameBorder=0 width="100%" scrolling="yes"
+			height="100%"></IFRAME>
 	</div>
 </body>
 </html>
