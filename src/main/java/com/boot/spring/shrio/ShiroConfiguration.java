@@ -100,7 +100,7 @@ public class ShiroConfiguration {
 		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
 		//
 		// authc：该过滤器下的页面必须验证后才能访问，它是Shiro内置的一个拦截器org.apache.shiro.web.filter.authc.FormAuthenticationFilter
-		filterChainDefinitionMap.put("/admin/*", "authc");
+		filterChainDefinitionMap.put("/admin/**", "authc");
 		//
 		// 这里为了测试，只限制/user，实际开发中请修改为具体拦截的请求规则
 		// //
@@ -154,8 +154,8 @@ public class ShiroConfiguration {
 		shiroFilterFactoryBean.setLoginUrl("/admin/login");
 		// //
 		// 登录成功后要跳转的连接
-		shiroFilterFactoryBean.setSuccessUrl("/admin/default");
-		shiroFilterFactoryBean.setUnauthorizedUrl("/403");
+		shiroFilterFactoryBean.setSuccessUrl("/admin/success");
+		shiroFilterFactoryBean.setUnauthorizedUrl("/admin/login");
 
 		loadShiroFilterChain(shiroFilterFactoryBean);
 		return shiroFilterFactoryBean;

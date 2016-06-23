@@ -85,7 +85,7 @@
 								});
 							</script> </cite>
 					</div>
-					<c:if test="${ info.validateNumber!=null }">
+					<c:if test="${ info.msg!=null }">
 						<div class="field">
 							<span><font color="red">${ info.msg }</font> </span>
 						</div>
