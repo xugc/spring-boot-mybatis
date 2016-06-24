@@ -38,7 +38,7 @@
 <body>
 	<div class="login">
 		<div class="login_form">
-			<form action="login" method="post">
+			<form action="submit" method="post">
 				<!-- <input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" /> -->
 				<div class="login_info">
@@ -51,6 +51,7 @@
 						</ul>
 						<input type="hidden" value="chinese" name="eid" id="eid" />
 						<input type="hidden" value="${ valcodeuuid }" name="pageId" />
+						<input type="hidden" value="${ _csrf_param_value }" name="${ _csrf_param_name }" />
 					</div>
 				</div>
 				<div class="form_info">

@@ -29,6 +29,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.boot.spring.domain.User;
 import com.boot.spring.domain.vo.UserLoginInfoVo;
 import com.boot.spring.service.UserService;
+import com.boot.spring.shrio.ShrioProperties;
 
 /**
  * @ClassName AdminLoginController
@@ -45,12 +46,16 @@ public class AdminLoginController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String toLogin(Model model, HttpSession session) {
-		String valcodeuuid = UUID.randomUUID().toString();
+		String valcodeuuid = UUID.randomUUID().toString();//解决同时打开多个登录窗口，验证码不对应的问题
 		model.addAttribute("valcodeuuid", valcodeuuid);
+		long currentSec=System.currentTimeMillis();
+		model.addAttribute("_csrf_param_name", ShrioProperties.CSRF_UUID_PARAM);//登录页面添加随机数,防止csrf攻击
+		model.addAttribute("_csrf_param_value", currentSec);
+		session.setAttribute("ppid", currentSec);
 		return "admin_login";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/submit", method = RequestMethod.POST)
 	public String login(String userName, String userPwd, String validateNumber,
 			HttpServletRequest request, HttpSession session, Model model,
 			RedirectAttributes attr) {

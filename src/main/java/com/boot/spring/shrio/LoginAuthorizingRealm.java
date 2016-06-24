@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 import com.boot.spring.dao.UserMapper;
 import com.boot.spring.domain.User;
 
-@Service("myShiroRealm")
+@Service("loginAuthorizingRealm")
 public class LoginAuthorizingRealm extends AuthorizingRealm {
 	private static final Logger logger = LoggerFactory
 			.getLogger(LoginAuthorizingRealm.class);
@@ -29,7 +29,7 @@ public class LoginAuthorizingRealm extends AuthorizingRealm {
 	private UserMapper userMapper;
 
 	/**
-	 * 权限认证，为当前登录的Subject授予角色和权限
+	 * 授权
 	 * 
 	 * @see 经测试：本例中该方法的调用时机为需授权资源被访问时
 	 * @see 经测试：并且每次访问需授权资源时都会执行该方法中的逻辑，这表明本例中默认并未启用AuthorizationCache
@@ -40,7 +40,6 @@ public class LoginAuthorizingRealm extends AuthorizingRealm {
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(
 			PrincipalCollection principalCollection) {
-		logger.info("##################执行Shiro权限认证##################");
 		// 获取当前登录输入的用户名，等价于(String)
 		principalCollection.fromRealm(getName()).iterator().next();
 		String loginName = (String) super
@@ -55,6 +54,7 @@ public class LoginAuthorizingRealm extends AuthorizingRealm {
 			roles.add("admin");
 			// 用户的角色集合
 			info.setRoles(roles);
+			info.addStringPermission("admin:manange");
 			// 用户的角色对应的所有权限，如果只使用角色定义访问权限，下面的四行可以不要
 			// List<Role> roleList = user.getRoleList();
 			// for (Role role : roleList) {
@@ -64,7 +64,6 @@ public class LoginAuthorizingRealm extends AuthorizingRealm {
 			// simpleAuthorInfo.addRole("admin");
 			// // 添加权限 //
 			// simpleAuthorInfo.addStringPermission("admin:manage"); //
-			logger.info("已为用户[mike]赋予了[admin]角色和[admin:manage]权限");
 			return info;
 		}
 		// 返回null的话，就会导致任何用户访问被拦截的请求时，都会自动跳转到unauthorizedUrl指定的地址

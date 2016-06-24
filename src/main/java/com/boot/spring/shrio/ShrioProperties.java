@@ -14,5 +14,7 @@ public class ShrioProperties {
 	public static final String SHRIO_PASSWORD_PARAM = "userPwd";
 	public static final String SHRIO_VALIDATE_CODE_PARAM = "validateNumber";
 	public static final String SHRIO_VALIDATE_CODE_ID_PARAM = "pageId";
+	public static final String CSRF_UUID_PARAM = "ppid";
+	public static final String LOGIN_PROCESS_URL = "/admin/submit";
 
 }

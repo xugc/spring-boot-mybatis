@@ -71,18 +71,18 @@ public class ShiroConfiguration {
 
 	@Bean(name = "securityManager")
 	public DefaultWebSecurityManager getDefaultWebSecurityManager(
-			LoginAuthorizingRealm myShiroRealm) {
+			LoginAuthorizingRealm loginAuthorizingRealm) {
 		DefaultWebSecurityManager dwsm = new DefaultWebSecurityManager();
-		dwsm.setRealm(myShiroRealm); // <!-- 用户授权/认证信息Cache, 采用EhCache 缓存 -->
+		dwsm.setRealm(loginAuthorizingRealm); // <!-- 用户授权/认证信息Cache, 采用EhCache 缓存 -->
 		dwsm.setCacheManager(getEhCacheManager());
 		return dwsm;
 	}
 
 	@Bean
 	public AuthorizationAttributeSourceAdvisor getAuthorizationAttributeSourceAdvisor(
-			LoginAuthorizingRealm myShiroRealm) {
+			LoginAuthorizingRealm loginAuthorizingRealm) {
 		AuthorizationAttributeSourceAdvisor aasa = new AuthorizationAttributeSourceAdvisor();
-		aasa.setSecurityManager(getDefaultWebSecurityManager(myShiroRealm));
+		aasa.setSecurityManager(getDefaultWebSecurityManager(loginAuthorizingRealm));
 		return new AuthorizationAttributeSourceAdvisor();
 	}
 
@@ -100,6 +100,7 @@ public class ShiroConfiguration {
 		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
 		//
 		// authc：该过滤器下的页面必须验证后才能访问，它是Shiro内置的一个拦截器org.apache.shiro.web.filter.authc.FormAuthenticationFilter
+		filterChainDefinitionMap.put("/admin/main", "authc,perms[admin:main]");//有顺序的同一个请求按照第一个来
 		filterChainDefinitionMap.put("/admin/**", "authc");
 		//
 		// 这里为了测试，只限制/user，实际开发中请修改为具体拦截的请求规则
@@ -126,23 +127,25 @@ public class ShiroConfiguration {
 		cfaFilter.setCaptchaParam(ShrioProperties.SHRIO_VALIDATE_CODE_PARAM);
 		cfaFilter
 				.setCaptchaIdParam(ShrioProperties.SHRIO_VALIDATE_CODE_ID_PARAM);
+		cfaFilter.setLoginProcessUrl(ShrioProperties.LOGIN_PROCESS_URL);
+		cfaFilter.setCsrfUuidParam(ShrioProperties.CSRF_UUID_PARAM);
 		return cfaFilter;
 	}
 
 	/**
 	 * ShiroFilter<br/>
 	 * 
-	 * @param myShiroRealm
+	 * @param loginAuthorizingRealm
 	 * @return * @author SHANHY
 	 * @create 2016年1月14日
 	 */
 	@Bean(name = "shiroFilter")
 	public ShiroFilterFactoryBean getShiroFilterFactoryBean(
-			LoginAuthorizingRealm myShiroRealm) {
+			LoginAuthorizingRealm loginAuthorizingRealm) {
 
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean(); // 必须设置
 		shiroFilterFactoryBean
-				.setSecurityManager(getDefaultWebSecurityManager(myShiroRealm));
+				.setSecurityManager(getDefaultWebSecurityManager(loginAuthorizingRealm));
 		Map<String, Filter> filters = new HashMap<String, Filter>();
 		filters.put("authc", getCaptchaFormAuthenticationFilter());
 		shiroFilterFactoryBean.setFilters(filters);
@@ -153,7 +156,7 @@ public class ShiroConfiguration {
 		// //
 		// 登录成功后要跳转的连接
 		shiroFilterFactoryBean.setSuccessUrl("/admin/success");
-		shiroFilterFactoryBean.setUnauthorizedUrl("/admin/login");
+		shiroFilterFactoryBean.setUnauthorizedUrl("/403");
 
 		loadShiroFilterChain(shiroFilterFactoryBean);
 		return shiroFilterFactoryBean;

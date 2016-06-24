@@ -35,5 +35,11 @@ public class ErrorController implements
 	public String error() {
 		return "无效的请求";
 	}
+	
+	@RequestMapping("/403")
+	@ResponseBody
+	public String unauth() {
+		return "拒绝访问";
+	}
 
 }

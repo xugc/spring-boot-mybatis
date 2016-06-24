@@ -3,9 +3,11 @@ package com.boot.spring.shrio.filter;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.crypto.hash.Md5Hash;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.util.WebUtils;
@@ -20,7 +22,59 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
 	private static final Logger LOG = LoggerFactory
 			.getLogger(CaptchaFormAuthenticationFilter.class);
 
+	public static final String DEFAULT_LOGIN_PROCESS_URL = "login";
+	public String loginProcessUrl = DEFAULT_LOGIN_PROCESS_URL;
+
 	public CaptchaFormAuthenticationFilter() {
+	}
+
+	public String getLoginProcessUrl() {
+		return loginProcessUrl;
+	}
+
+	public void setLoginProcessUrl(String loginProcessUrl) {
+		this.loginProcessUrl = loginProcessUrl;
+	}
+
+	public static final String DEFAULT_CSRF_UUID_PARAM = "csrf_id";
+	private String csrfUuidParam = DEFAULT_CSRF_UUID_PARAM;
+
+	public String getCsrfUuidParam() {
+		return csrfUuidParam;
+	}
+
+	public void setCsrfUuidParam(String csrfUuidParam) {
+		this.csrfUuidParam = csrfUuidParam;
+	}
+
+	protected String getCsrfUuid(ServletRequest request) {
+		return WebUtils.getCleanParam(request, getCsrfUuidParam());
+	}
+
+	/**
+	 * 加入随机数校验,防止csrf攻击
+	 */
+	@Override
+	protected boolean isAccessAllowed(ServletRequest request,
+			ServletResponse response, Object mappedValue) {
+		if(!isLoginRequest(request, response)){
+			return super.isAccessAllowed(request, response, mappedValue);
+		}
+		Session session=getSubject(request, response).getSession(true);
+		Object ppid = session.getAttribute(getCsrfUuidParam());
+		session.removeAttribute(getCsrfUuidParam());
+		String clientPpid = getCsrfUuid(request);
+		if (ppid == null || clientPpid == null)
+			return false;
+		return super.isAccessAllowed(request, response, mappedValue)
+				&& clientPpid.trim().equals(ppid.toString());
+	}
+
+	@Override
+	protected boolean isLoginRequest(ServletRequest request,
+			ServletResponse response) {
+		return pathsMatch(getLoginProcessUrl(), request)
+				|| super.isLoginRequest(request, response);
 	}
 
 	/**
@@ -59,7 +113,7 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
 		String cid = getCaptchaId(request);
 		// session中的图形码字符串
 		String captcha = (String) request.getSession().getAttribute(cid);
-		request.getSession().removeAttribute(cid);//使用完立马删除
+		request.getSession().removeAttribute(cid);// 使用完立马删除
 		// 比对
 		if (captcha != null && !captcha.equalsIgnoreCase(token.getCaptcha())) {
 			throw new FailLoginException("验证码错误！");
