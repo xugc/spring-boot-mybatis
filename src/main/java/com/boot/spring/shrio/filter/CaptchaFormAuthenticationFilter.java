@@ -3,7 +3,6 @@ package com.boot.spring.shrio.filter;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.crypto.hash.Md5Hash;
@@ -57,7 +56,7 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
 	@Override
 	protected boolean isAccessAllowed(ServletRequest request,
 			ServletResponse response, Object mappedValue) {
-		if(!isLoginRequest(request, response)){
+		if(!isLoginRequest(request, response)){//非登录页面查看是否已登录
 			return super.isAccessAllowed(request, response, mappedValue);
 		}
 		Session session=getSubject(request, response).getSession(true);
@@ -66,8 +65,9 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
 		String clientPpid = getCsrfUuid(request);
 		if (ppid == null || clientPpid == null)
 			return false;
-		return super.isAccessAllowed(request, response, mappedValue)
-				&& clientPpid.trim().equals(ppid.toString());
+//		return super.isAccessAllowed(request, response, mappedValue)
+//				&& clientPpid.trim().equals(ppid.toString());
+		return false;//登录页面必须重新进行权限验证
 	}
 
 	@Override
