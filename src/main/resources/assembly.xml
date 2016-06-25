@@ -29,6 +29,13 @@
 			<outputDirectory>\config</outputDirectory>
 		</fileSet>
 		<fileSet>
+			<directory>src/main/resources</directory>
+			<includes>
+				<include>ehcache-shiro.xml</include>
+			</includes>
+			<outputDirectory>\config</outputDirectory>
+		</fileSet>
+		<fileSet>
 			<directory>${project.basedir}\src\main\resources\bin</directory>
 			<outputDirectory>\bin</outputDirectory>
 			<fileMode>0755</fileMode>

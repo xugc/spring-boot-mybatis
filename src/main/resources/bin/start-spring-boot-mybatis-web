@@ -5,7 +5,7 @@
 # description: The spring-boot-mybatis-web server file
 
 #export JAVA HOME
-export JAVA_HOME=/usr/java/jdk1.8.0_65
+export JAVA_HOME=/opt/jdk1.8.0_92
 export CLASSPATH=.:${JAVA_HOME}/lib/dt.jar:${JAVA_HOME}/lib/tools.jar
 
 #打开根目录
@@ -47,6 +47,7 @@ START () {
 	else
 		# 构建CLASSPATH环境变量
 		CLASSPATH=${CLASSPATH}:${SERVER_HOME}/lib/*
+		CLASSPATH=${CLASSPATH}:${SERVER_HOME}/config/
 		
 		echo "Using JAVA_HOME:${JAVA_HOME}"
 		echo "Using CLASSPATH:${CLASSPATH}"
