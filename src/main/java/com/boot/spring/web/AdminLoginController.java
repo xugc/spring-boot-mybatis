@@ -87,5 +87,15 @@ public class AdminLoginController {
 	public String toMain() {
 		return "admin_main";
 	}
+	
+	@RequestMapping("/table")
+	public String toTable() {
+		return "admin_table";
+	}
+	
+	@RequestMapping("/header")
+	public String toHeader() {
+		return "admin_header";
+	}
 
 }

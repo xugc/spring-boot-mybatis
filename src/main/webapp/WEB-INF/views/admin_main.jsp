@@ -31,7 +31,7 @@
 	}
 </script>
 </head>
-<body style="overflow:hidden;">
+<body style="overflow:hidden; width: 100%; height:100%; position: absolute;" >
 	<div class="top">
 		<div class="top_about">
 			<a href="#" class="help1" id="btn2" onclick="openMsgWindow()">使用帮助</a>
@@ -101,8 +101,22 @@
 	</div>
 	<div class="right">
 		<IFRAME style="OVERFLOW: visible" id="main" name="main"
-			src="about:blank" frameBorder=0 width="100%" scrolling="yes"
+			src="table" frameBorder=0 width="100%" scrolling="yes"
 			height="100%"></IFRAME>
+			<script type="text/javascript">
+			$("#main").load(
+					function() {
+						var mainheight = $(this).contents().find("body")
+								.height() - 270;
+						$(this).height(mainheight);
+
+					});
+			window.onresize = function() {
+				var iframe = document.getElementById("main");
+				iframe.style.width = window.innerWidth + 'px';
+				iframe.style.height = window.innerHeight -100 + 'px';
+			};
+		</script>
 	</div>
 </body>
 </html>

@@ -8,41 +8,26 @@
 <script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
 <script src="../js/admin-iframe.js"></script>
 </head>
-<body>
-	<div class="top">
-		<div class="top_about">
-			<a href="#" class="help1" id="btn2" onclick="openMsgWindow()">使用帮助</a>
-			<a href="#" class="help2">关于</a>
-		</div>
-		<div class="admin_logo">
-			<img src="../images/admin/admin_logo.jpg">
-		</div>
-		<div class="top_nav">
-			<ul>
-				<li><a href="#" class="selected">后台首页</a>
-				</li>
-				<li><a href="#">网站首页管理</a>
-				</li>
-				<li><a href="#">菜单设置</a>
-				</li>
-				<li><a href="#">文章管理</a>
-				</li>
-				<li><a href="#">采集设置</a>
-				</li>
-				<li><a href="#">广告管理</a>
-				</li>
-				<li><a href="#">数据管理</a>
-				</li>
-				<li><a href="#">用户管理</a>
-				</li>
-				<li><a href="#">系统设置</a>
-				</li>
-			</ul>
-		</div>
-		<div class="top_member">
-			欢迎您，${ user.userName } | <a href="#">帐号管理</a> | <a href="#">充值</a> |
-			<a href="#">编辑</a> | <a href="#">2条信息</a>
-		</div>
+<body style="overflow: hidden; height:100%;width: 100%; color: black;">
+	<div class="top">dsfdsfd</div>
+	<div class="left">dsfdsfd</div>
+	<div class="right" style="margin-left: 0px;">
+		<IFRAME style="OVERFLOW: visible;" id="main" name="main" src="table"
+			frameBorder=0 width="100%" scrolling="yes" height="100%"></IFRAME>
+		<script type="text/javascript">
+			$("#main").load(
+					function() {
+						var mainheight = $(this).contents().find("body")
+								.height() - 270;
+						$(this).height(mainheight);
+
+					});
+			window.onresize = function() {
+				var iframe = document.getElementById("main");
+				iframe.style.width = window.innerWidth + 'px';
+				iframe.style.height = window.innerHeight -100 + 'px';
+			};
+		</script>
 	</div>
 </body>
 </html>

@@ -8,9 +8,8 @@
 <script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
 <script src="../js/admin-iframe.js"></script>
 </head>
-<body class="right_body">
+<body class="right_body" style="margin-left:200;">
 	<div class="body">
-		<div class="top_subnav">彩云之南内容管理平台 ＞ 首页</div>
 		<div class="title_h2">
 			搜索
 		</div>
