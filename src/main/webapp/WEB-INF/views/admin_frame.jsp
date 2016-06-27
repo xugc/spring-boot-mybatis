@@ -28,38 +28,38 @@
 				<ul>
 					<c:choose>
 						<c:when test="${ selTopMenu==0  }">
-							<li><a href="javascript:void(0);" class="selected">后台首页</a>
+							<li><a href="javascript:void(0);" class="selected" id="menu_0">后台首页</a>
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li><a href="javascript:void(0);">后台首页</a></li>
+							<li><a href="javascript:void(0);" id="menu_0">后台首页</a></li>
 						</c:otherwise>
 					</c:choose>
 					<c:choose>
 						<c:when test="${ selTopMenu==1  }">
-							<li><a href="javascript:void(0);" class="selected">网站首页管理</a>
+							<li><a href="javascript:void(0);" class="selected" id="menu_1">网站首页管理</a>
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li><a href="javascript:void(0);">网站首页管理</a></li>
+							<li><a href="javascript:void(0);" id="menu_1">网站首页管理</a></li>
 						</c:otherwise>
 					</c:choose>
 					<c:choose>
 						<c:when test="${ selTopMenu==2  }">
-							<li><a href="javascript:void(0);" class="selected">菜单设置</a>
+							<li><a href="javascript:void(0);" class="selected"  id="menu_2">菜单设置</a>
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li><a href="javascript:void(0);">菜单设置</a></li>
+							<li><a href="javascript:void(0);" id="menu_2">菜单设置</a></li>
 						</c:otherwise>
 					</c:choose>
 					<c:choose>
 						<c:when test="${ selTopMenu==3  }">
-							<li><a href="javascript:void(0);" class="selected">文章管理</a>
+							<li><a href="javascript:void(0);" class="selected" id="menu_3">文章管理</a>
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li><a href="javascript:void(0);">文章管理</a></li>
+							<li><a href="javascript:void(0);" id="menu_3">文章管理</a></li>
 						</c:otherwise>
 					</c:choose>
 					<!-- <li><a href="#">采集设置</a>
@@ -84,8 +84,8 @@
 		style="width:195px;padding:0px; margin:0px; background-color: #f1f1f1;">
 		<c:choose>
 			<c:when test="${ selTopMenu==0 }">
-				<div class="side_switch" id="side_switch" style="display: none;"></div>
-				<div class="side_switchl" id="side_switchl" style="display: none;"></div>
+				<!-- <div class="side_switch" id="side_switch" style="display: none;"></div>
+				<div class="side_switchl" id="side_switchl" style="display: none;"></div> -->
 				<div class="left" style="display: none;">
 					<!-- <div class="member_info">
 						<div class="member_ico">
@@ -94,8 +94,8 @@
 						<a class="system_a" href="">系统设置</a><a href="" class="system_log">注销</a><a
 							href="" class="system_logout">退出</a>
 					</div> -->
-					<div class="left_title">常用功能操作</div>
-					<ul class="side">
+					<div class="left_title" style="margin:0px;border-top: 0px;">常用功能操作</div>
+					<ul class="side" id="left_menu_1">
 						<li><a href="javascript:void(0);">网站栏目管理</a></li>
 						<li><a href="#" class="selected">档案列表</a></li>
 						<li><a href="#">等待审核的文档(23)</a></li>
