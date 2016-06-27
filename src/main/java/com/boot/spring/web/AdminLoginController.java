@@ -73,29 +73,21 @@ public class AdminLoginController {
 	}
 
 	@RequestMapping("/success")
-	public String toDefault(HttpSession session, Model model) {
+	public String toSuccess(HttpSession session, Model model) {
 		String loginUser = (String) session.getAttribute("userName");
 		User user = userService.getUserByUserName(loginUser);
 		UserLoginInfoVo userInfo = new UserLoginInfoVo();
 		userInfo.setUserName(user.getUserName());
 		userInfo.setEmail(user.getEmail());
 		model.addAttribute("user", userInfo);
+		model.addAttribute("selTopMenu", 0);
+		return "admin_frame";
+	}
+	
+	@RequestMapping("/default")
+	public String toDefault(HttpSession session, Model model) {
 		return "admin_default";
 	}
 
-	@RequestMapping("/main")
-	public String toMain() {
-		return "admin_main";
-	}
-	
-	@RequestMapping("/table")
-	public String toTable() {
-		return "admin_table";
-	}
-	
-	@RequestMapping("/header")
-	public String toHeader() {
-		return "admin_header";
-	}
 
 }

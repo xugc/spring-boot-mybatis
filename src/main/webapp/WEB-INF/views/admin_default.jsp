@@ -9,40 +9,7 @@
 <script src="../js/admin-iframe.js"></script>
 </head>
 <body>
-	<div class="top">
-		<div class="top_about">
-			<a href="#" class="help1" id="btn2" onclick="openMsgWindow()">使用帮助</a>
-			<a href="#" class="help2">关于</a>
-		</div>
-		<div class="admin_logo">
-			<img src="../images/admin/admin_logo.jpg">
-		</div>
-		<div class="top_nav">
-			<ul>
-				<li><a href="#" class="selected">后台首页</a></li>
-				<li><a href="#">网站首页管理</a></li>
-				<li><a href="#">菜单设置</a></li>
-				<li><a href="#">文章管理</a></li>
-				<li><a href="#">采集设置</a></li>
-				<li><a href="#">广告管理</a></li>
-				<li><a href="#">数据管理</a></li>
-				<li><a href="#">用户管理</a></li>
-				<li><a href="#">系统设置</a></li>
-			</ul>
-		</div>
-		<div class="top_member">
-			欢迎您，${ user.userName } | <a href="#">帐号管理</a> | <a href="#">充值</a> | <a href="#">编辑</a>
-			| <a href="#">2条信息</a>
-		</div>
-	</div>
-	<div class="body right_body">
-		<!-- <div class="top_subnav">彩云之南内容管理平台 ＞ 首页</div> -->
-		<div class="title">
-			<div class="title_info zs">
-				${ user.userName } 早上好，欢迎使用彩云之南后台管理系统<label>(${ user.email
-					})</label> <a href="#">帐号设置</a>
-			</div>
-		</div>
+	<div class="body" style="overflow: hidden;">
 		<div class="quick">
 			<div class="login_info">
 				您上次登录的时间是：2011-12-27 18:53 (不是您登录的？<a href="#">请点这里</a>)
