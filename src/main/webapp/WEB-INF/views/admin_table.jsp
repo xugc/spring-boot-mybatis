@@ -8,7 +8,7 @@
 <script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
 <script src="../js/admin-iframe.js"></script>
 </head>
-<body class="right_body" style="margin-left:200;">
+<body>
 	<div class="body">
 		<div class="title_h2">
 			搜索

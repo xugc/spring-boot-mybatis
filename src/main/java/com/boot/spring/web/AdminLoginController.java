@@ -88,6 +88,5 @@ public class AdminLoginController {
 	public String toDefault(HttpSession session, Model model) {
 		return "admin_default";
 	}
-
-
+	
 }

@@ -96,17 +96,14 @@
 					</div> -->
 					<div class="left_title" style="margin:0px;border-top: 0px;">常用功能操作</div>
 					<ul class="side" id="left_menu_1">
-						<li><a href="javascript:void(0);">网站栏目管理</a></li>
-						<li><a href="#" class="selected">档案列表</a></li>
-						<li><a href="#">等待审核的文档(23)</a></li>
-						<li><a href="#">我发布的文档</a></li>
-						<li><a href="#">评论管理</a></li>
-						<li><a href="#">内容回收站</a></li>
+						<li><a href="javascript:void(0);" turl="../homePage/table" class="selected">导航管理</a></li>
+						<li><a href="javascript:void(0);">广告管理</a></li>
+						<li><a href="javascript:void(0);">热门商品管理</a></li>
 					</ul>
 					<ul class="side catsub">
-						<li class="feed"><a href="http://www.uimaker.com">网站订阅查看</a>
-						</li>
-						<li class="side_about"><a href="#">版权声明</a></li>
+						<!-- <li class="feed"><a href="http://www.uimaker.com">网站订阅查看</a>
+						</li> -->
+						<li class="side_about"><a href="javascript:void(0);">版权声明</a></li>
 					</ul>
 				</div>
 			</c:when>
@@ -122,18 +119,15 @@
 							href="" class="system_logout">退出</a>
 					</div> -->
 					<div class="left_title">常用功能操作</div>
-					<ul class="side">
-						<li><a href="javascript:void(0);">网站栏目管理</a></li>
-						<li><a href="#" class="selected">档案列表</a></li>
-						<li><a href="#">等待审核的文档(23)</a></li>
-						<li><a href="#">我发布的文档</a></li>
-						<li><a href="#">评论管理</a></li>
-						<li><a href="#">内容回收站</a></li>
+					<ul class="side" id="left_menu_1">
+						<li><a href="javascript:void(0);" turl="../homePage/table" class="selected">导航管理</a></li>
+						<li><a href="javascript:void(0);">广告管理</a></li>
+						<li><a href="javascript:void(0);">热门商品管理</a></li>
 					</ul>
 					<ul class="side catsub">
-						<li class="feed"><a href="http://www.uimaker.com">网站订阅查看</a>
-						</li>
-						<li class="side_about"><a href="#">版权声明</a></li>
+						<!-- <li class="feed"><a href="http://www.uimaker.com">网站订阅查看</a>
+						</li> -->
+						<li class="side_about"><a href="javascript:void(0);">版权声明</a></li>
 					</ul>
 				</div>
 			</c:otherwise>
