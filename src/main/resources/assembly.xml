@@ -37,7 +37,7 @@
 		</fileSet>
 		<fileSet>
 			<!-- <directory>${project.basedir}\src\main\resources\bin</directory> -->
-			<directory>src/main/resources/bin</directory>
+			<directory>src/main/resources/bin/${target.dir}</directory>
 			<outputDirectory>\bin</outputDirectory>
 			<fileMode>0755</fileMode>
 			<lineEnding>unix</lineEnding>

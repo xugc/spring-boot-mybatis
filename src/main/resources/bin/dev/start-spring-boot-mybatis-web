@@ -1,0 +1,124 @@
+#!/bin/sh
+# by xugucheng<guchengxu1988@163.com>
+# Comments to support chkconfig on centos Linux
+# chkconfig: 2345 64 36
+# description: The spring-boot-mybatis-web server file
+
+#export JAVA HOME
+export JAVA_HOME=/opt/jdk1.8.0_92
+export CLASSPATH=.:${JAVA_HOME}/lib/dt.jar:${JAVA_HOME}/lib/tools.jar
+
+#打开根目录
+cd `dirname $0`
+cd ../
+# 获取可执行文件名作为工程名
+export PROJECT=`basename $0|sed 's/^s.....//g'| tr -d '\r'`
+
+# 当前应用目录
+export SERVER_HOME=`pwd`
+export PROJECT_HOME="@`pwd`@"
+
+# 日志输出文件
+export STDOUT_FILE=${SERVER_HOME}/stdout.log
+export JAVA_OPTS="-Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Dproject.home=${PROJECT_HOME}"
+export JAVA_DEBUG_OPTS=""
+if [ "$2" = "debug" ]; then
+    JAVA_DEBUG_OPTS=" -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n "
+fi
+
+export JAVA_JMX_OPTS=""
+if [ "$2" = "jmx" ]; then
+    JAVA_JMX_OPTS=" -Dcom.sun.management.jmxremote.port=1099 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false "
+fi
+
+export JAVA_MEM_OPTS=""
+export BITS=`${JAVA_HOME}/bin/java -version 2>&1 | grep -i 64-bit`
+if [ -n "$BITS" ]; then
+    JAVA_MEM_OPTS=" -server -Xmx2g -Xms2g -Xmn256m -XX:PermSize=128m -Xss256k -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:+UseCMSCompactAtFullCollection -XX:LargePageSizeInBytes=128m -XX:+UseFastAccessorMethods -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 "
+else
+    JAVA_MEM_OPTS=" -server -Xms1g -Xmx1g -XX:PermSize=128m -XX:SurvivorRatio=2 -XX:+UseParallelGC "
+fi
+
+export JAVA_CLASS=com.boot.spring.BootStarterApplication
+START () {
+	PIDS=`ps -ef | grep java | grep "${PROJECT_HOME}"|grep -v grep |awk '{print $2}'`
+	if [ -n "${PIDS}" ];then
+		echo "${PROJECT} is running!"
+	else
+		# 构建CLASSPATH环境变量
+		CLASSPATH=${CLASSPATH}:${SERVER_HOME}/lib/*
+		CLASSPATH=${CLASSPATH}:${SERVER_HOME}/config/
+		
+		echo "Using JAVA_HOME:${JAVA_HOME}"
+		echo "Using CLASSPATH:${CLASSPATH}"
+		echo "Using PROJECT:${PROJECT}"
+		echo "Using SERVER_HOME:${SERVER_HOME}"
+
+		echo "Starting the ${PROJECT} ..."
+
+		export CRONOLOG_PATH=`which cronolog`;
+		if [ ! -f "${CRONOLOG_PATH}" ]; then
+			nohup sh -c '${JAVA_HOME}/bin/java ${JAVA_OPTS} ${JAVA_MEM_OPTS} ${JAVA_DEBUG_OPTS} ${JAVA_CLASS}' > ${STDOUT_FILE} 2>&1 &
+		else
+			nohup sh -c '${JAVA_HOME}/bin/java ${JAVA_OPTS} ${JAVA_MEM_OPTS} ${JAVA_DEBUG_OPTS} ${JAVA_CLASS} |${CRONOLOG_PATH} "${STDOUT_FILE}-%Y.%m.%d.log"' > /dev/null 2>&1 &
+		fi
+
+		sleep 3
+		PIDA=`ps -ef | grep java | grep "${PROJECT_HOME}"|grep -v grep |awk '{print $2}'`
+		if [ -z "${PIDA}" ];then
+			echo "${PROJECT} start err!"
+		fi
+	fi
+}
+
+STOP () { 
+	PIDS=`ps -ef | grep java | grep "${PROJECT_HOME}"|grep -v grep |awk '{print $2}'`
+	if [ -z "${PIDS}" ];then
+		echo "ERROR: The ${PROJECT} does not started!"
+	else 
+		echo "Stopping the ${PROJECT} ..."
+		for PID in ${PIDS};do
+			kill ${PID} > /dev/null 2>&1
+		done
+		sleep 3
+		PIDSA=`ps -ef | grep java | grep "${PROJECT_HOME}"|grep -v grep |awk '{print $2}'`
+		if [ -n "${PIDSA}" ];then
+			for PID in ${PIDSA} ; do
+				kill -9 ${PIDA} > /dev/null 2>&1	
+			done
+			if [ -n "${PIDSA}" ];then
+				echo "${PROJECT} stop err!"
+			fi
+		fi
+	fi
+}
+
+STATUS () {
+	PIDS=`ps -ef | grep java | grep "${PROJECT_HOME}"|grep -v grep |awk '{print $2}'`
+	if [ -z "${PIDS}" ]; then
+		echo "${PROJECT} does not started!"
+	else 
+		echo "${PROJECT} is running!"
+	fi
+}
+
+case "$1" in 
+	start|START)
+	START
+	;;
+	stop|STOP)
+	STOP
+	;;
+	restart|RESTART)
+	STOP
+	sleep 5
+	START
+	;;
+	status|STATUS)
+	STATUS
+	;;
+	*)
+	echo 'Please input start|stop|status|restart'
+	;;
+esac
+
