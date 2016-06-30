@@ -153,7 +153,7 @@
 				<directory>src/main/resources</directory>
 				<excludes>
 					<exclude>assembly.xml</exclude>
-					<exclude>logback.xml</exclude>
+					<!-- <exclude>logback.xml</exclude> -->
 					<exclude>generatorConfig.xml</exclude>
 					<exclude>conf/**/**.properties</exclude>
 					<exclude>bin/**</exclude>
