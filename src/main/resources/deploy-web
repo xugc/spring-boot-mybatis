@@ -1,0 +1,18 @@
+#!/bin/sh
+export MY_WEB_SOURCE=/home/xugucheng/git/spring-boot-mybatis
+export MY_WEB_HOME=/home/www/web
+export WEB_APP_NAME=color-hill
+cd $MY_WEB_SOURCE
+git pull
+export profile=$1
+if [ -z "${profile}" ]; then
+   profile=dev
+fi
+echo "current profile is : ${profile}."
+cd $MY_WEB_SOURCE
+mvn clean package -Dmaven.test.skip=true -P ${profile}
+cd $MY_WEB_HOME
+rm -rf *
+tar -zxvf $MY_WEB_SOURCE/target/mybatis-spring-web-0.0.1-SNAPSHOT.tar.gz
+mv mybatis-spring-web-0.0.1-SNAPSHOT $WEB_APP_NAME
+$WEB_APP_NAME/bin/start-spring-boot-mybatis-web restart
