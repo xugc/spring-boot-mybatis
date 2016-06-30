@@ -9,7 +9,7 @@
 	</formats>
 	<fileSets>
 		<fileSet>
-			<directory>${project.basedir}\src\main\webapp</directory>
+			<directory>src/main/webapp</directory>
 			<!-- 过滤 -->
 			<includes>
 				<include>css\**</include>
@@ -36,7 +36,8 @@
 			<outputDirectory>\config</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>${project.basedir}\src\main\resources\bin</directory>
+			<!-- <directory>${project.basedir}\src\main\resources\bin</directory> -->
+			<directory>src/main/resources/bin</directory>
 			<outputDirectory>\bin</outputDirectory>
 			<fileMode>0755</fileMode>
 			<lineEnding>unix</lineEnding>

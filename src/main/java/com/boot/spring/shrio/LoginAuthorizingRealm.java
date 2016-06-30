@@ -40,6 +40,7 @@ public class LoginAuthorizingRealm extends AuthorizingRealm {
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(
 			PrincipalCollection principalCollection) {
+		logger.info("-------------用户授权------------");
 		// 获取当前登录输入的用户名，等价于(String)
 		principalCollection.fromRealm(getName()).iterator().next();
 		String loginName = (String) super
@@ -76,7 +77,9 @@ public class LoginAuthorizingRealm extends AuthorizingRealm {
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken authenticationToken)
-			throws AuthenticationException { // UsernamePasswordToken对象用来存放提交的登录信息
+			throws AuthenticationException { 
+		logger.info("-----------认证用户信息-----------");
+		// UsernamePasswordToken对象用来存放提交的登录信息
 		UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
 
 		User user = userMapper.selectByUserName(token.getUsername());

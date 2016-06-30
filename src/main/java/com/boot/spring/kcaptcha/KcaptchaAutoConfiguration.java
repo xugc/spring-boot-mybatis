@@ -38,6 +38,7 @@ public class KcaptchaAutoConfiguration {
 	@Bean(name = "captchaProducer")
 	@ConditionalOnMissingBean
 	public DefaultKaptcha kaptchaProducer() {
+		logger.info("----------加载验证码生成器----------");
 		DefaultKaptcha kaptcha = new DefaultKaptcha();
 		Config config = new Config(properties.getProperties());
 		kaptcha.setConfig(config);

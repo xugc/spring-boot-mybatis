@@ -72,6 +72,7 @@ public class ShiroConfiguration {
 	@Bean(name = "securityManager")
 	public DefaultWebSecurityManager getDefaultWebSecurityManager(
 			LoginAuthorizingRealm loginAuthorizingRealm) {
+		logger.info("------------加载web环境shiro管理器--------------");
 		DefaultWebSecurityManager dwsm = new DefaultWebSecurityManager();
 		dwsm.setRealm(loginAuthorizingRealm); // <!-- 用户授权/认证信息Cache, 采用EhCache 缓存 -->
 		dwsm.setCacheManager(getEhCacheManager());
@@ -94,6 +95,7 @@ public class ShiroConfiguration {
 	 */
 	private void loadShiroFilterChain(
 			ShiroFilterFactoryBean shiroFilterFactoryBean) {
+		logger.info("------------配置访问路径权限--------------");
 		// /////////////////////
 		// 下面这些规则配置最好配置到配置文件中
 		// ///////////////////////
@@ -122,6 +124,7 @@ public class ShiroConfiguration {
 
 	@Bean
 	public CaptchaFormAuthenticationFilter getCaptchaFormAuthenticationFilter() {
+		logger.info("------------加载自定义权限过滤器--------------");
 		CaptchaFormAuthenticationFilter cfaFilter = new CaptchaFormAuthenticationFilter();
 		cfaFilter.setUsernameParam(ShrioProperties.SHRIO_USERNAME_PARAM);
 		cfaFilter.setPasswordParam(ShrioProperties.SHRIO_PASSWORD_PARAM);
@@ -144,6 +147,7 @@ public class ShiroConfiguration {
 	public ShiroFilterFactoryBean getShiroFilterFactoryBean(
 			LoginAuthorizingRealm loginAuthorizingRealm) {
 
+		logger.info("------------加载shiro过滤器工厂--------------");
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean(); // 必须设置
 		shiroFilterFactoryBean
 				.setSecurityManager(getDefaultWebSecurityManager(loginAuthorizingRealm));
