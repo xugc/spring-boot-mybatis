@@ -11,8 +11,8 @@
  */
 package com.boot.spring.kcaptcha;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -30,7 +30,8 @@ import com.google.code.kaptcha.util.Config;
 @Configuration
 @EnableConfigurationProperties(KcaptchaProperties.class)
 public class KcaptchaAutoConfiguration {
-	private static Log log = LogFactory.getLog(KcaptchaAutoConfiguration.class);
+	private static final Logger logger = LoggerFactory
+			.getLogger(KcaptchaAutoConfiguration.class);
 	@Autowired
 	private KcaptchaProperties properties;
 
