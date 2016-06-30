@@ -30,14 +30,14 @@
 		<profile>
 			<id>test</id>
 			<properties>
-				<profileActive>dev</profileActive>
+				<profileActive>test</profileActive>
 				<target.dir>test</target.dir>
 			</properties>
 		</profile>
 		<profile>
 			<id>pro</id>
 			<properties>
-				<profileActive>dev</profileActive>
+				<profileActive>pro</profileActive>
 				<target.dir>pro</target.dir>
 			</properties>
 		</profile>
