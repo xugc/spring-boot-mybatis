@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @EnableAutoConfiguration
 @RequestMapping("/homePage")
 public class HomePageController {
+
 	@RequestMapping("/table")
 	public String toTable(HttpSession session, Model model) {
 		return "admin_table";
