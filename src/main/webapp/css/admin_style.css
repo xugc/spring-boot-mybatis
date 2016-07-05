@@ -355,13 +355,24 @@ p a{
 	font-size:14px;
 	font-weight:bold;	
 }
-.filed label{
-	position:absolute;
-	padding:6px 3px 6px 0px;
+.submit_bt{
+	text-align: center;
 }
-.filed input {
+.submit_bt .button{
+	height:30px;
+	width:50px;
+}
+.field{
 	margin-left:50px;
-	padding:3px;
+	margin-top: 20px;
+}
+.field label{
+	width: 100px;
+	text-align: right;
+}
+.field input{
+	margin-left:10px;
+	height:20px;
 	border-top:1px solid #bebebe;
 	border-left:1px solid #bebebe;
 	border-right:1px solid #e1e1e1;
@@ -369,7 +380,37 @@ p a{
 	background:url(../images/admin/input_bg.jpg) repeat-x 0 0;
 	margin-right:10px;
 }
-.filed .button{
+.field .filebox {
+	margin-left:10px;
+}
+.condition_header{
+	margin-top:20px;
+	margin-left:30px;
+	margin-bottom:20px;
+}
+.filed_cond label{
+	padding:6px 3px 6px 0px;
+	text-align: right;
+}
+.filed_cond input {
+	height:20px;
+	border-top:1px solid #bebebe;
+	border-left:1px solid #bebebe;
+	border-right:1px solid #e1e1e1;
+	border-bottom:1px solid #e1e1e1;
+	background:url(../images/admin/input_bg.jpg) repeat-x 0 0;
+	margin-right:10px;
+}
+.filed_cond select {
+	height:20px;
+	border-top:1px solid #bebebe;
+	border-left:1px solid #bebebe;
+	border-right:1px solid #e1e1e1;
+	border-bottom:1px solid #e1e1e1;
+	background:url(../images/admin/input_bg.jpg) repeat-x 0 0;
+	margin-right:10px;
+}
+.filed_cond .button{
 	width:66px;
 	height:30px;
 	border:none;
@@ -410,7 +451,7 @@ p a{
 .table th.top_th a{
 	float:left;
 	overflow:hidden;
-	width:40px;
+	width:60px;
 }
 .table th.top_th{
 	background:url(../images/admin/table_th.jpg) repeat-x 0 0;
@@ -478,6 +519,9 @@ p a{
 .table .tongji{
 	background:url(../images/admin/tj_ico_.jpg) no-repeat 0 center;
 }
+.table .delete{
+	background:url(../images/admin/btn_del.gif) no-repeat 0 center;
+}
 .table .sort{
 	background:url(../images/admin/sort_ico.jpg) no-repeat 0 center;
 }
@@ -485,3 +529,7 @@ p a{
 	background:none;
 }
 .tablelist{padding-top:23px;}
+.clear{
+	clear:both;
+	margin-top: 10px;
+}

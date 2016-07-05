@@ -28,8 +28,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/homePage")
 public class HomePageController {
 
-	@RequestMapping("/table")
-	public String toTable(HttpSession session, Model model) {
-		return "admin_table";
+	@RequestMapping("/toAdvertisement")
+	public String toAdvertisementList(HttpSession session, Model model) {
+		return "admin_advertisement_list";
+	}
+	@RequestMapping("/toAdvertisementAdd")
+	public String toAdvertisementAdd(HttpSession session, Model model) {
+		return "admin_advertisement_add";
 	}
 }

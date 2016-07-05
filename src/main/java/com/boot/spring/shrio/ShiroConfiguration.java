@@ -105,6 +105,7 @@ public class ShiroConfiguration {
 //		filterChainDefinitionMap.put("/admin/main", "authc,perms[admin:manange]");//有顺序的同一个请求按照第一个来
 		filterChainDefinitionMap.put("/admin/**", "authc");
 		filterChainDefinitionMap.put("/homePage/**", "authc");
+		filterChainDefinitionMap.put("/statistics/**", "authc");
 		//
 		// 这里为了测试，只限制/user，实际开发中请修改为具体拦截的请求规则
 		// //

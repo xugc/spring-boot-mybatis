@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="../css/themes/icon.css" />
 <script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
 <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
 <script src="../js/admin-iframe.js"></script>
 </head>
 <body class="easyui-layout">
@@ -35,6 +36,9 @@
 					</li>
 					<li>
 						<a href="javascript:void(0);" id="menu_3">文章管理</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);" id="menu_4">统计信息</a>
 					</li>
 				</ul>
 			</div>
@@ -64,7 +68,7 @@
 			<div class="left_title" style="margin:0px;border-top: 0px;">常用功能操作</div>
 			<ul class="side" id="left_menu_1">
 				<li>
-					<a href="javascript:void(0);" turl="../homePage/table" class="selected" pid="1" id="left_menu_101">广告管理</a>
+					<a href="javascript:void(0);" turl="../homePage/toAdvertisement" class="selected" pid="1" id="left_menu_101">广告管理</a>
 				</li>
 				<li>
 					<a href="javascript:void(0);" pid="1" id="left_menu_102">热门商品管理</a>
@@ -80,6 +84,11 @@
 					<a href="javascript:void(0);" pid="3" class="selected" id="left_menu_301">热门文章管理</a>
 				</li>
 			</ul>
+			<ul class="side" id="left_menu_4">
+				<li>
+					<a href="javascript:void(0);" pid="3" class="selected" id="left_menu_301" turl="../statistics/productHotMap">商品热点地图</a>
+				</li>
+			</ul>
 			<ul class="side catsub">
 				<!-- <li class="feed"><a href="http://www.uimaker.com">网站订阅查看</a>
 						</li> -->
@@ -89,7 +98,7 @@
 			</ul>
 		</div>
 	</div>
-	<div data-options="region:'center',border:false" class="easyui-tabs" fit="true" style="padding: 0px;margin: 0px;" id="centerPanel">
+	<div data-options="region:'center',border:false" class="easyui-tabs" style="padding: 0px;margin: 0px;" id="centerPanel">
 		<iframe style="width: 100%;height: 100%;" id="main" name="main" src="default" frameBorder=0 scrolling="auto"></iframe>
 	</div>
 </body>
