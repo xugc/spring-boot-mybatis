@@ -12,6 +12,7 @@
 		<!-- <div class="title_h2">搜索</div>
 		<p class="line" style="margin-top:5;"></p> -->
 		<form action="#">
+		<input type="hidden" value="${ _csrf_param_value }" name="${ _csrf_param_name }" />
 			<div class="condition_header">
 				<div class="filed_cond fl">
 					<label>广告名称：</label>

@@ -1,5 +1,8 @@
 package com.boot.spring.shrio.filter;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.boot.spring.exception.FailLoginException;
+import com.boot.spring.shrio.ShrioProperties;
 import com.boot.spring.shrio.validatecode.CaptchaUsernamePasswordToken;
 import com.google.code.kaptcha.Constants;
 
@@ -51,23 +55,48 @@ public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
 	}
 
 	/**
-	 * 加入随机数校验,防止csrf攻击
+	 * 一个标签页面已经登录，防止再打个一个标签页面不需要登录<br>
+	 * 增加请求随机数，防止csrf攻击
 	 */
 	@Override
 	protected boolean isAccessAllowed(ServletRequest request,
 			ServletResponse response, Object mappedValue) {
-		if(!isLoginRequest(request, response)){//非登录页面查看是否已登录
+		Session session = getSubject(request, response).getSession(true);
+		if (!isLoginRequest(request, response)) {// 非登录页面查看是否已登录
+			if ((request instanceof HttpServletRequest)
+					&& WebUtils.toHttp(request).getMethod()
+							.equalsIgnoreCase(POST_METHOD)) {// 是否是post请求，post请求需要防止csrf攻击
+				Object ppid = session.getAttribute(getCsrfUuidParam());
+				// session.removeAttribute(getCsrfUuidParam());
+				String clientPpid = getCsrfUuid(request);
+				if (ppid == null || clientPpid == null)
+					return false;
+				Set<String> cp = (Set<String>) ppid;
+				if (!cp.contains(clientPpid))
+					return false;
+				cp.remove(clientPpid);
+			} else {
+				setCsrfToken(request, session);
+			}
 			return super.isAccessAllowed(request, response, mappedValue);
 		}
-		Session session=getSubject(request, response).getSession(true);
-		Object ppid = session.getAttribute(getCsrfUuidParam());
-		session.removeAttribute(getCsrfUuidParam());
-		String clientPpid = getCsrfUuid(request);
-		if (ppid == null || clientPpid == null)
-			return false;
-//		return super.isAccessAllowed(request, response, mappedValue)
-//				&& clientPpid.trim().equals(ppid.toString());
-		return false;//登录页面必须重新进行权限验证
+		setCsrfToken(request, session);
+		return false;// 登录页面必须重新进行权限验证
+	}
+
+	private void setCsrfToken(ServletRequest request, Session session) {
+		long currentSec = System.currentTimeMillis();
+		request.setAttribute("_csrf_param_name",
+				ShrioProperties.CSRF_UUID_PARAM);// 登录页面添加随机数,防止csrf攻击
+		request.setAttribute("_csrf_param_value", currentSec);
+		Object csrfParam = session
+				.getAttribute(ShrioProperties.CSRF_UUID_PARAM);
+		if (csrfParam == null) {
+			csrfParam = new HashSet<String>();
+		}
+		Set<String> cp = ((Set<String>) csrfParam);
+		cp.add(new Long(currentSec).toString());
+		session.setAttribute(ShrioProperties.CSRF_UUID_PARAM, csrfParam);
 	}
 
 	@Override

@@ -11,6 +11,8 @@
  */
 package com.boot.spring.web;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -48,10 +50,7 @@ public class AdminLoginController {
 	public String toLogin(Model model, HttpSession session) {
 		String valcodeuuid = UUID.randomUUID().toString();//解决同时打开多个登录窗口，验证码不对应的问题
 		model.addAttribute("valcodeuuid", valcodeuuid);
-		long currentSec=System.currentTimeMillis();
-		model.addAttribute("_csrf_param_name", ShrioProperties.CSRF_UUID_PARAM);//登录页面添加随机数,防止csrf攻击
-		model.addAttribute("_csrf_param_value", currentSec);
-		session.setAttribute("ppid", currentSec);
+		
 		return "admin_login";
 	}
 
