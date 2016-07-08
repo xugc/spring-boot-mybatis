@@ -98,7 +98,7 @@
 			</ul>
 		</div>
 	</div>
-	<div data-options="region:'center',border:false" class="easyui-tabs" style="padding: 0px;margin: 0px;" id="centerPanel">
+	<div data-options="region:'center',border:false" class="easyui-tabs" style="padding: 0px;margin: 0px;width: 100%;height: 100%;" id="centerPanel">
 		<iframe style="width: 100%;height: 100%;" id="main" name="main" src="default" frameBorder=0 scrolling="auto"></iframe>
 	</div>
 </body>
