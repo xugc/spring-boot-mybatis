@@ -533,3 +533,22 @@ p a{
 	clear:both;
 	margin-top: 10px;
 }
+
+/* The light table itself */
+#lighttable {
+	position: relative;
+	width: 800px;
+	height: 450px;
+	padding: 50px;
+	margin: 0 auto;
+	border: 5px solid #111;
+}
+
+/* Photos on the light table */
+#lighttable img {
+	position:absolute;
+	border: 2px solid #fff;
+	box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
+	-moz-box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
+	-webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.9);
+}

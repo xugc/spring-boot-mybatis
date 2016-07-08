@@ -10,55 +10,87 @@
 <script type="text/javascript" src="../js/jquery-2.0.2.min.js"></script>
 <script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="../js/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript">
+	var newImageZIndex = 1; // To make sure newly-loaded images land on top of images on the table
+	var loaded = false; // Used to prevent initPhotos() running twice
+	// When the document is ready, fire up the table!
+	$(initPhotos);
+	function initPhotos() {
+		// (Ensure this function doesn't run twice)
+		if (loaded)
+			return;
+		loaded = true;
+		// Process each photo in turn...
+		$('#lighttable img').each(function(index) {
+			// Make the photo draggable
+			$(this).draggable({
+				containment : 'parent',
+				stack : '#lighttable img',
+				cursor : 'pointer'
+			});
+			// When the photo image has loaded...
+			$(this).load(function() {
+				// (Ensure this function doesn't run twice)
+				if ($(this).data('loaded'))
+					return;
+				$(this).data('loaded', true);
+				// Make sure its z-index is higher than the photos already on the table
+				$(this).css('z-index', newImageZIndex++);
+
+			});
+			// Hack for browsers that don't fire load events for cached images
+			if (this.complete)
+				$(this).trigger("load");
+
+		});
+	}
+	
+</script>
 </head>
 <body>
 	<div class="body">
 		<form action="#">
-			<!-- <div class="field fl">
-				<label>关键词：</label>
-				<input type="text" class="text" size="20">
-			</div>
-			<div class="field fl">
-				<label>栏目：</label>
-				<input type="text" class="text" size="20">
-					<select name="category" id="category" style="display:none">
-						<option value="1">分类栏目</option>
-						<option value="2">所有分类</option>
-					</select>
-			</div> -->
 			<form id="advForm" method="post" action="#">
 				<div class="field">
 					<label>组名:</label>
-					<input class="easyui-validatebox" required="true" type="text" name="groupName"style="width:10%"></input>
+					<input class="easyui-validatebox" required="true" type="text" name="groupName" style="width:10%"></input>
 				</div>
 				<div class="field">
 					<label>组编号:</label>
-					<input class="easyui-validatebox" required="true" type="text" name="groupNameNum"style="width:10%"></input>
+					<input class="easyui-validatebox" required="true" type="text" name="groupNameNum" style="width:10%"></input>
 				</div>
 				<div class="field">
 					<label>向上淡出广告:</label>
-					<input class="easyui-filebox" multiple="true" type="text" name="fadeInUpImage" data-options="prompt:'选择上传文件，可多选'" accept="image/*" style="width:50%" buttonText="浏览"></input>
+					<input class="easyui-filebox" multiple="true" type="text" name="fadeInUpImage" data-options="prompt:'选择上传文件，可多选'" accept="image/*"
+						style="width:50%" buttonText="浏览"></input>
 				</div>
 				<div class="field">
 					<label>向下淡出广告:</label>
-					<input class="easyui-filebox" multiple="true" type="text" name="fadeInDownImage" data-options="prompt:'选择上传文件，可多选'" accept="image/*" style="width:50%" buttonText="浏览"></input>
+					<input class="easyui-filebox" multiple="true" type="text" name="fadeInDownImage" data-options="prompt:'选择上传文件，可多选'" accept="image/*"
+						style="width:50%" buttonText="浏览"></input>
 				</div>
 				<div class="field">
 					<label>向左淡出广告:</label>
-					<input class="easyui-filebox" multiple="true" type="text" name="fadeInLeftImage" data-options="prompt:'选择上传文件，可多选'" accept="image/*" style="width:50%" buttonText="浏览"></input>
+					<input class="easyui-filebox" multiple="true" type="text" name="fadeInLeftImage" data-options="prompt:'选择上传文件，可多选'" accept="image/*"
+						style="width:50%" buttonText="浏览"></input>
 				</div>
 				<div class="field">
 					<label>向右淡出广告:</label>
-					<input class="easyui-filebox" multiple="true" type="text" name="fadeInRightImage" data-options="prompt:'选择上传文件，可多选'" accept="image/*" style="width:50%" buttonText="浏览"></input>
+					<input class="easyui-filebox" multiple="true" type="text" name="fadeInRightImage" data-options="prompt:'选择上传文件，可多选'" accept="image/*"
+						style="width:50%" buttonText="浏览"></input>
+				</div>
+				<div id="lighttable">
+					<img src="../images/photo02.jpg" style="left:24px;top:34px;" />
+					<img src="../images/photo15.jpg" style="left:200px;top:100px;" />
+					<img src="../images/photo20.jpg" style="left:300px;top:200px;" />
+					<img src="../images/photo16.jpg" style="left:45px;top:160px;" />
+					<img src="../images/photo14.jpg" style="left:100px;top:90px;" />
 				</div>
 				<p class="line" style="margin-top:10;"></p>
 				<div class="submit_bt">
 					<input type="submit" class="button" value="保存">
 				</div>
 			</form>
-			<!-- <div class="field fl">
-				<button class="button"></button>
-			</div> -->
 		</form>
 	</div>
 </body>

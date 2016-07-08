@@ -80,7 +80,7 @@
 				</tr>
 				<tr>
 					<th>
-						<input type="checkbox" name="selAll" value="0" />
+						<input type="checkbox" id="selAll"/>
 					</th>
 					<th>编号</th>
 					<th>图片名称</th>
@@ -93,7 +93,7 @@
 
 				<tr>
 					<td>
-						<input type="checkbox" name="selAll" value="1" />
+						<input type="checkbox" value="1" />
 					</td>
 					<td>0101</td>
 					<td>风景</td>
