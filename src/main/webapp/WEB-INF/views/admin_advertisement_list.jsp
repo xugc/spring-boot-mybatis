@@ -12,6 +12,8 @@
 		<!-- <div class="title_h2">搜索</div>
 		<p class="line" style="margin-top:5;"></p> -->
 		<form action="#">
+			<input type="hidden" value="${ _csrf_param_value }" name="_csrf_param_value" />
+			<input type="hidden" value="${ _csrf_param_name }" name="_csrf_param_name" />
 			<div class="condition_header">
 				<div class="filed_cond fl">
 					<label>广告名称：</label>
@@ -77,7 +79,9 @@
 					</th>
 				</tr>
 				<tr>
-					<th><input type="checkbox" name="selAll" value="0" /></th>
+					<th>
+						<input type="checkbox" name="selAll" value="0" />
+					</th>
 					<th>编号</th>
 					<th>图片名称</th>
 					<th>组编号</th>
@@ -88,7 +92,9 @@
 				</tr>
 
 				<tr>
-					<td><input type="checkbox" name="selAll" value="1" /></td>
+					<td>
+						<input type="checkbox" name="selAll" value="1" />
+					</td>
 					<td>0101</td>
 					<td>风景</td>
 					<td>01</td>

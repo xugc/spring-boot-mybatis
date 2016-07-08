@@ -133,7 +133,6 @@ public class ShiroConfiguration {
 		cfaFilter
 				.setCaptchaIdParam(ShrioProperties.SHRIO_VALIDATE_CODE_ID_PARAM);
 		cfaFilter.setLoginProcessUrl(ShrioProperties.LOGIN_PROCESS_URL);
-		cfaFilter.setCsrfUuidParam(ShrioProperties.CSRF_UUID_PARAM);
 		return cfaFilter;
 	}
 

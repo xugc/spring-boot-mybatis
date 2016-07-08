@@ -11,8 +11,6 @@
  */
 package com.boot.spring.web;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +29,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.boot.spring.domain.User;
 import com.boot.spring.domain.vo.UserLoginInfoVo;
 import com.boot.spring.service.UserService;
-import com.boot.spring.shrio.ShrioProperties;
 
 /**
  * @ClassName AdminLoginController
@@ -50,16 +47,6 @@ public class AdminLoginController {
 	public String toLogin(Model model, HttpSession session) {
 		String valcodeuuid = UUID.randomUUID().toString();//解决同时打开多个登录窗口，验证码不对应的问题
 		model.addAttribute("valcodeuuid", valcodeuuid);
-		long currentSec=System.currentTimeMillis();
-		model.addAttribute("_csrf_param_name", ShrioProperties.CSRF_UUID_PARAM);//登录页面添加随机数,防止csrf攻击
-		model.addAttribute("_csrf_param_value", currentSec);
-		Object csrfParam=session.getAttribute(ShrioProperties.CSRF_UUID_PARAM);
-		if(csrfParam==null){
-			csrfParam=new HashSet<String>();
-		}
-		Set<String> cp=((Set<String>)csrfParam);
-		cp.add(new Long(currentSec).toString());
-		session.setAttribute(ShrioProperties.CSRF_UUID_PARAM, csrfParam);
 		return "admin_login";
 	}
 
