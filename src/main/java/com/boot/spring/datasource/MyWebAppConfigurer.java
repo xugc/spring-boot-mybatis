@@ -10,8 +10,8 @@ public class MyWebAppConfigurer
  
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/myres/**").addResourceLocations("classpath:/myres/");
-        super.addResourceHandlers(registry);
+//        registry.addResourceHandler("/myres/**").addResourceLocations("classpath:/myres/");
+//        super.addResourceHandlers(registry);
     }
  
 }

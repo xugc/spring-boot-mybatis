@@ -6,17 +6,18 @@ import com.boot.spring.domain.User;
 
 @Mapper
 public interface UserMapper {
-    int deleteByPrimaryKey(Integer id);
+	int deleteByPrimaryKey(Integer id);
 
-    int insert(User record);
+	int insert(User record);
 
-    int insertSelective(User record);
+	int insertSelective(User record);
 
-    User selectByPrimaryKey(Integer id);
-    
-    User selectByUserName(String userName);
+	User selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(User record);
+//	@Resource(name = "slaver1SqlSessionTemplate")
+	User selectByUserName(String userName);
 
-    int updateByPrimaryKey(User record);
+	int updateByPrimaryKeySelective(User record);
+
+	int updateByPrimaryKey(User record);
 }
