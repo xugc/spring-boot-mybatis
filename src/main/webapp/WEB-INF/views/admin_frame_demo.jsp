@@ -28,9 +28,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="index.html">
-					<i>
-						<img src="../images/fh.png" />
-					</i>
+					<i><img src="../images/fh.png"/></i>
 					<strong>网站后台管理系统 </strong>
 				</a>
 			</div>
@@ -44,13 +42,13 @@
 				<ul class="nav" id="main-menu">
 
 					<li>
-						<a href="index.html">
+						<a class="active-menu" href="index.html">
 							<i class="fa fa-dashboard"></i>
 							首页
 						</a>
 					</li>
 					<li>
-						<a href="#" class="active-menu">
+						<a href="#">
 							<i class="fa fa-sitemap"></i>
 							网站管理
 							<span class="fa arrow"></span>
@@ -106,8 +104,8 @@
 
 							</div>
 							<div class="panel-right pull-right">
-								<h3>20</h3>
-								<strong>热门文章</strong>
+								<h3>8,457</h3>
+								<strong> Daily Visits</strong>
 							</div>
 						</div>
 					</div>
@@ -118,8 +116,8 @@
 							</div>
 
 							<div class="panel-right pull-right">
-								<h3>100</h3>
-								<strong>所有文章</strong>
+								<h3>52,160</h3>
+								<strong> Sales</strong>
 
 							</div>
 						</div>
@@ -131,8 +129,8 @@
 
 							</div>
 							<div class="panel-right pull-right">
-								<h3>1200</h3>
-								<strong>访问量</strong>
+								<h3>15,823</h3>
+								<strong> Comments </strong>
 
 							</div>
 						</div>
@@ -144,55 +142,148 @@
 
 							</div>
 							<div class="panel-right pull-right">
-								<h3>500</h3>
-								<strong>日均访问量</strong>
+								<h3>36,752</h3>
+								<strong>No. of Visits</strong>
 
 							</div>
 						</div>
 					</div>
 				</div>
 
+
 				<div class="row">
-					<div class="col-md-6 col-sm-12 col-xs-12">
+					<div class="col-md-12">
 						<div class="panel panel-default">
-							<div class="panel-heading">文章TOP10</div>
+							<div class="panel-heading">Line Chart</div>
+							<div class="panel-body">
+								<div id="morris-line-chart"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-xs-6 col-md-3">
+						<div class="panel panel-default">
+							<div class="panel-body easypiechart-panel">
+								<h4>Customers</h4>
+								<div class="easypiechart" id="easypiechart-blue" data-percent="82">
+									<span class="percent">82%</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6 col-md-3">
+						<div class="panel panel-default">
+							<div class="panel-body easypiechart-panel">
+								<h4>Sales</h4>
+								<div class="easypiechart" id="easypiechart-orange" data-percent="55">
+									<span class="percent">55%</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6 col-md-3">
+						<div class="panel panel-default">
+							<div class="panel-body easypiechart-panel">
+								<h4>Profits</h4>
+								<div class="easypiechart" id="easypiechart-teal" data-percent="84">
+									<span class="percent">84%</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6 col-md-3">
+						<div class="panel panel-default">
+							<div class="panel-body easypiechart-panel">
+								<h4>No. of Visits</h4>
+								<div class="easypiechart" id="easypiechart-red" data-percent="46">
+									<span class="percent">46%</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--/.row-->
+
+
+				<div class="row">
+					<div class="col-md-9 col-sm-12 col-xs-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">Bar Chart Example</div>
+							<div class="panel-body">
+								<div id="morris-bar-chart"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-12 col-xs-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">Donut Chart Example</div>
+							<div class="panel-body">
+								<div id="morris-donut-chart"></div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">Area Chart</div>
+							<div class="panel-body">
+								<div id="morris-area-chart"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /. ROW  -->
+
+
+
+
+
+				<div class="row">
+					<div class="col-md-4 col-sm-12 col-xs-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">Tasks Panel</div>
 							<div class="panel-body">
 								<div class="list-group">
 
 									<a href="#" class="list-group-item">
-										<span class="badge">1 分钟前</span>
+										<span class="badge">7 minutes ago</span>
 										<i class="fa fa-fw fa-comment"></i>
-										人生本寂寞
+										Commented on a post
 									</a>
 									<a href="#" class="list-group-item">
-										<span class="badge">10 分钟前</span>
+										<span class="badge">16 minutes ago</span>
 										<i class="fa fa-fw fa-truck"></i>
-										风风火火闯九州
+										Order 392 shipped
 									</a>
 									<a href="#" class="list-group-item">
-										<span class="badge">12 分钟前</span>
+										<span class="badge">36 minutes ago</span>
 										<i class="fa fa-fw fa-globe"></i>
-										大河向东流啊
+										Invoice 653 has paid
 									</a>
 									<a href="#" class="list-group-item">
-										<span class="badge">1 小时前</span>
+										<span class="badge">1 hour ago</span>
 										<i class="fa fa-fw fa-user"></i>
-										天上星亮晶晶
+										A new user has been added
 									</a>
 									<a href="#" class="list-group-item">
-										<span class="badge">1.23 小时前</span>
+										<span class="badge">1.23 hour ago</span>
 										<i class="fa fa-fw fa-user"></i>
-										风光无限好
+										A new user has added
 									</a>
 									<a href="#" class="list-group-item">
-										<span class="badge">昨天</span>
+										<span class="badge">yesterday</span>
 										<i class="fa fa-fw fa-globe"></i>
-										黄昏之歌
+										Saved the world
 									</a>
 								</div>
 								<div class="text-right">
 									<a href="#">
-										更多
+										More Tasks
 										<i class="fa fa-arrow-circle-right"></i>
 									</a>
 								</div>
@@ -200,48 +291,68 @@
 						</div>
 
 					</div>
-					<div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-default">
-							<div class="panel-heading">文章TOP10</div>
-							<div class="panel-body">
-								<div class="list-group">
+					<div class="col-md-8 col-sm-12 col-xs-12">
 
-									<a href="#" class="list-group-item">
-										<span class="badge">1 分钟前</span>
-										<i class="fa fa-fw fa-comment"></i>
-										人生本寂寞
-									</a>
-									<a href="#" class="list-group-item">
-										<span class="badge">10 分钟前</span>
-										<i class="fa fa-fw fa-truck"></i>
-										风风火火闯九州
-									</a>
-									<a href="#" class="list-group-item">
-										<span class="badge">12 分钟前</span>
-										<i class="fa fa-fw fa-globe"></i>
-										大河向东流啊
-									</a>
-									<a href="#" class="list-group-item">
-										<span class="badge">1 小时前</span>
-										<i class="fa fa-fw fa-user"></i>
-										天上星亮晶晶
-									</a>
-									<a href="#" class="list-group-item">
-										<span class="badge">1.23 小时前</span>
-										<i class="fa fa-fw fa-user"></i>
-										风光无限好
-									</a>
-									<a href="#" class="list-group-item">
-										<span class="badge">昨天</span>
-										<i class="fa fa-fw fa-globe"></i>
-										黄昏之歌
-									</a>
-								</div>
-								<div class="text-right">
-									<a href="#">
-										更多
-										<i class="fa fa-arrow-circle-right"></i>
-									</a>
+						<div class="panel panel-default">
+							<div class="panel-heading">Responsive Table Example</div>
+							<div class="panel-body">
+								<div class="table-responsive">
+									<table class="table table-striped table-bordered table-hover">
+										<thead>
+											<tr>
+												<th>S No.</th>
+												<th>First Name</th>
+												<th>Last Name</th>
+												<th>User Name</th>
+												<th>Email ID.</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td>John</td>
+												<td>Doe</td>
+												<td>John15482</td>
+												<td>name@site.com</td>
+											</tr>
+											<tr>
+												<td>2</td>
+												<td>Kimsila</td>
+												<td>Marriye</td>
+												<td>Kim1425</td>
+												<td>name@site.com</td>
+											</tr>
+											<tr>
+												<td>3</td>
+												<td>Rossye</td>
+												<td>Nermal</td>
+												<td>Rossy1245</td>
+												<td>name@site.com</td>
+											</tr>
+											<tr>
+												<td>4</td>
+												<td>Richard</td>
+												<td>Orieal</td>
+												<td>Rich5685</td>
+												<td>name@site.com</td>
+											</tr>
+											<tr>
+												<td>5</td>
+												<td>Jacob</td>
+												<td>Hielsar</td>
+												<td>Jac4587</td>
+												<td>name@site.com</td>
+											</tr>
+											<tr>
+												<td>6</td>
+												<td>Wrapel</td>
+												<td>Dere</td>
+												<td>Wrap4585</td>
+												<td>name@site.com</td>
+											</tr>
+
+										</tbody>
+									</table>
 								</div>
 							</div>
 						</div>
@@ -250,6 +361,9 @@
 				</div>
 				<!-- /. ROW  -->
 				<footer>
+					<p>
+						Copyright &copy; 2016.Company name All rights reserved.
+					</p>
 				</footer>
 			</div>
 			<!-- /. PAGE INNER  -->
